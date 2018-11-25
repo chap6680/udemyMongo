@@ -5,27 +5,25 @@ let _db;
 
 const mongoConnect = callback => {
   MongoClient.connect(
-    'mongodb+srv://dchapma:glasses@cluster0-hbcwz.mongodb.net/shop?retryWrites=true'
+    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/shop?retryWrites=true'
   )
     .then(client => {
-		console.log('Connected!');
-		_db = client.db()
-    	callback();
+      console.log('Connected!');
+      _db = client.db();
+      callback();
     })
     .catch(err => {
-    	console.log(err);
-		throw err;
-	});
+      console.log(err);
+      throw err;
+    });
 };
 
 const getDb = () => {
-	if (_db) { 
-		return _db;
-	}
-	throw 'No database found';
+  if (_db) {
+    return _db;
+  }
+  throw 'No database found!';
 };
 
-
-//module.exports = mongoConnect;
 exports.mongoConnect = mongoConnect;
 exports.getDb = getDb;
